@@ -1,0 +1,59 @@
+{
+  "lang": "en",
+  "head": {
+    "appName": "AQI Tracker"
+  },
+  "body": {
+    "header": {
+      "title": "Air Quality Tracker",
+      "subtitle": "Track air conditions for your location and cities around the world."
+    },
+    "dashboard": {
+      "title": "Air Quality Inspections",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "yesterday": "Yesterday",
+      "today": "Today",
+      "tomorrow": "Tomorrow",
+      "airQualityIn": "Air Quality in",
+      "search": {
+        "placeholder": "Beijing, New York, Tokyo...",
+        "button": "Search"
+      },
+      "error": {
+        "noLocation": "No data available for this location",
+        "noForecast": "No forecast available for this location"
+      }
+    },
+    "airRanges": {
+      "0-50": {
+        "status": "Good",
+        "description": "Air quality is satisfactory and poses little or no risk."
+      },
+      "51-100": {
+        "status": "Moderate",
+        "description": "Air quality is acceptable; however, there may be some health concerns for a very small number of people who are unusually sensitive to air pollution."
+      },
+      "101-150": {
+        "status": "Unhealthy for Sensitive Groups",
+        "description": "Members of sensitive groups (such as children, the elderly, and individuals with respiratory or heart conditions) may experience health effects. The general public is less likely to be affected."
+      },
+      "151-200": {
+        "status": "Unhealthy",
+        "description": "Everyone may begin to experience health effects; members of sensitive groups may experience more serious health effects."
+      },
+      "201-300": {
+        "status": "Very Unhealthy",
+        "description": "Health alert: everyone may experience more serious health effects."
+      },
+      "301-500": {
+        "status": "Hazardous",
+        "description": "Health warnings of emergency conditions. The entire population is likely to be affected."
+      },
+      "invalid": {
+        "status": "Invalid",
+        "description": "Invalid air quality provided. Please try again."
+      }
+    }
+  }
+}
