@@ -37,8 +37,8 @@ const StyledTextField = styled(TextField)`
 const StyledButton = styled(Button)`
   && {
     width: 100%;
-    height: 54px; /* Adjust the height as needed */
-    min-width: 200px; /* Adjust the width as needed */
+    height: 54px;
+    min-width: 200px;
     font-weight: bold;
     @media (min-width: 1200px) {
       width: 25%;
@@ -57,14 +57,23 @@ const FormContainer = () => {
   };
 
   return (
-    <StyledFormContainerWrapper onSubmit={handleSearch}>
+    <StyledFormContainerWrapper
+      onSubmit={handleSearch}
+      data-testid="dashboard-form-container"
+    >
       <StyledTextField
         label={dashboard.search.placeholder}
         variant="outlined"
         value={selectedCity}
         onChange={(e) => setSelectedCity(e.target.value)}
+        data-testid="dashboard-search-input"
       />
-      <StyledButton type="submit" variant="contained" color="primary">
+      <StyledButton
+        type="submit"
+        variant="contained"
+        color="primary"
+        data-testid="dashboard-search-button"
+      >
         {dashboard.search.button}
       </StyledButton>
     </StyledFormContainerWrapper>

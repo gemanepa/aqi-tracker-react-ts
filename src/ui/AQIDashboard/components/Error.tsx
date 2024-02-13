@@ -13,7 +13,7 @@ const Error = () => {
 
   if (isError || response?.status === "error") {
     return (
-      <StyledLocationParagraph>
+      <StyledLocationParagraph data-testid="error-container">
         {JSON.stringify(response?.data)?.replace(/"/g, "")}
       </StyledLocationParagraph>
     );

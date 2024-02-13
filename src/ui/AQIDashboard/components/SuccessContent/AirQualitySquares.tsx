@@ -53,7 +53,10 @@ const AirQualitySquares: React.FC<CalculatedAQIsWithRanges> = ({
         gap: "10px",
       }}
     >
-      <div style={{ textAlign: "center", paddingTop: "2.5vh" }}>
+      <div
+        style={{ textAlign: "center", paddingTop: "2.5vh" }}
+        data-testid="yesterday-square"
+      >
         <Label
           style={{
             color: yesterday.range.color,
@@ -67,6 +70,7 @@ const AirQualitySquares: React.FC<CalculatedAQIsWithRanges> = ({
         </SquareContainer>
       </div>
       <div
+        data-testid="today-square"
         style={{
           textAlign: "center",
           textDecoration: today.value === -1 ? "line-through" : "none",
@@ -78,6 +82,7 @@ const AirQualitySquares: React.FC<CalculatedAQIsWithRanges> = ({
         </SquareContainer>
       </div>
       <div
+        data-testid="tomorrow-square"
         style={{
           textAlign: "center",
           paddingTop: "2.5vh",

@@ -16,7 +16,7 @@ const Loader = () => {
   if (!isLoading) return null;
 
   return (
-    <LoaderContainer>
+    <LoaderContainer data-testid="loader-container">
       <CircularProgress />
     </LoaderContainer>
   );

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
-import applogo from "@/assets/media/applogo.png";
 import translations from "@/assets/i18n/en.json";
 import formatTitle from "../utils/formatTitle";
+import Logo from "./Logo";
 
 const LogoTitleWrapper = styled.div`
   display: flex;
@@ -11,17 +11,6 @@ const LogoTitleWrapper = styled.div`
 
   @media (min-width: 1200px) {
     flex-direction: row;
-  }
-`;
-
-const Logo = styled.img`
-  width: 100px;
-  height: 100px;
-  margin: 0 auto;
-
-  @media (min-width: 1200px) {
-    width: 260px;
-    height: 260px;
   }
 `;
 
@@ -50,7 +39,7 @@ export default function HeaderTitle() {
 
   return (
     <LogoTitleWrapper>
-      <Logo src={applogo} alt="App Logo" data-test="applogo" />
+      <Logo />
       <Title>
         <span>{firstRow}</span>
         <span>{secondRow}</span>

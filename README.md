@@ -17,4 +17,5 @@ A mobile-responsive ReactJS TypeScript application that helps users monitor the 
 ## Setup
 
 > npm install (if it fails, use nvm install first to switch to the correct nodejs version)
+
 > npm run dev

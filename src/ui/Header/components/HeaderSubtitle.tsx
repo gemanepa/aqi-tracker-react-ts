@@ -19,7 +19,7 @@ export default function HeaderSubtitle() {
   const { subtitle } = translations.body.header;
 
   return (
-    <StyledHeaderSubtitle data-test="subheader">
+    <StyledHeaderSubtitle data-testid="subheader">
       {subtitle}
     </StyledHeaderSubtitle>
   );

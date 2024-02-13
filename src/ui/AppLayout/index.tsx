@@ -33,9 +33,13 @@ type AppLayoutProps = {
 
 function AppLayout({ Header, AQIDashboard }: AppLayoutProps) {
   return (
-    <StyledAppLayout>
-      <StyledHeaderContainer>{Header}</StyledHeaderContainer>
-      <StyledAQIDashboardContainer>{AQIDashboard}</StyledAQIDashboardContainer>
+    <StyledAppLayout data-testid="app-layout">
+      <StyledHeaderContainer data-testid="header-container">
+        {Header}
+      </StyledHeaderContainer>
+      <StyledAQIDashboardContainer data-testid="aqi-dashboard-container">
+        {AQIDashboard}
+      </StyledAQIDashboardContainer>
     </StyledAppLayout>
   );
 }

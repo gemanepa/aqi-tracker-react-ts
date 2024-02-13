@@ -20,7 +20,7 @@ const LatLongRow = () => {
   const longitude = response?.data?.city?.geo[1];
 
   return (
-    <LatitudeLongitudeInfo>
+    <LatitudeLongitudeInfo data-testid="dashboard-latitude-longitude-info">
       {dashboard.latitude}: {latitude} | {dashboard.longitude}: {longitude}
     </LatitudeLongitudeInfo>
   );
