@@ -2,6 +2,8 @@
 
 A mobile-responsive ReactJS TypeScript application that helps users monitor the Air Quality Index (AQI) of their current location or any specified location
 
+Live Version: https://aqi-tracker-react-ts.vercel.app/
+
 ## Tech Stack
 
 - React Hooks, including Context hook
