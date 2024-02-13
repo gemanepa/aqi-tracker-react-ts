@@ -1,4 +1,4 @@
-# React + TypeScript + Vite
+# AQI Tracker | React + TS + Vite
 
 A mobile-responsive ReactJS TypeScript application that helps users monitor the Air Quality Index (AQI) of their current location or any specified location
 
@@ -6,15 +6,15 @@ Live Version: https://aqi-tracker-react-ts.vercel.app/
 
 ## Tech Stack
 
-- React Hooks, including Context hook
-- Typescript
+- React Hooks (including Context hook)
+- Typescript static typing
 - TanStack (React) Query for Data Fetching
 - Emotion for CSS-in-JSS Styled Components
 - MaterialUI for UI Components
 - Playwright for End to End Automation testing
 - Jest + React Testing Library for Unitary testing
 - ESlint coding styles rules
-- Github Actions CI Workflow for automating checks
+- Github Actions Workflow to run e2e, jest, ts and eslint on CI
 - Vite for Bundling + Path Aliases
 
 ## Setup

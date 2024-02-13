@@ -18,4 +18,5 @@ export default {
     "<rootDir>/src/assets/media/",
   ],
   testPathIgnorePatterns: ["/node_modules/", "/test/e2e/"],
+  detectOpenHandles: true,
 };
