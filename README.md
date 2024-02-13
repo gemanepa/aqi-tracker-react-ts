@@ -14,6 +14,7 @@ Live Version: https://aqi-tracker-react-ts.vercel.app/
 - Playwright for End to End Automation testing
 - Jest + React Testing Library for Unitary testing
 - ESlint coding styles rules
+- Github Actions CI Workflow for automating checks
 - Vite for Bundling + Path Aliases
 
 ## Setup
