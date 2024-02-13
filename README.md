@@ -9,7 +9,7 @@ A mobile-responsive ReactJS TypeScript application that helps users monitor the 
 - TanStack (React) Query for Data Fetching
 - Emotion for CSS-in-JSS Styled Components
 - MaterialUI for UI Components
-- Puppeteer for End to End Automation testing
+- Playwright for End to End Automation testing
 - Jest + React Testing Library for Unitary testing
 - ESlint coding styles rules
 - Vite for Bundling + Path Aliases

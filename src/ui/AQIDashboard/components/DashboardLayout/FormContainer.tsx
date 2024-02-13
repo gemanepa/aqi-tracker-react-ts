@@ -66,7 +66,9 @@ const FormContainer = () => {
         variant="outlined"
         value={selectedCity}
         onChange={(e) => setSelectedCity(e.target.value)}
-        data-testid="dashboard-search-input"
+        inputProps={{
+          "data-testid": "dashboard-search-input",
+        }}
       />
       <StyledButton
         type="submit"

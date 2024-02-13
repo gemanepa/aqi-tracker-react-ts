@@ -17,4 +17,5 @@ export default {
     "\\.pnp\\.[^\\/]+$",
     "<rootDir>/src/assets/media/",
   ],
+  testPathIgnorePatterns: ["/node_modules/", "/test/e2e/"],
 };
