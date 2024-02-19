@@ -1,11 +1,10 @@
-import { AQIApiResponse } from "../types/aqi-api-response";
+import { AQIApiResponse } from "@/types/aqi-api-response";
+import { AQI_API_TOKEN } from "@/utils/constants/tokens";
 
 async function getAQI(cityName: string): Promise<AQIApiResponse> {
   try {
     const response = await fetch(
-      `https://api.waqi.info/feed/${cityName}/?token=${
-        import.meta.env.VITE_AQI_API_TOKEN
-      }`
+      `https://api.waqi.info/feed/${cityName}/?token=${AQI_API_TOKEN}`
     );
     if (!response.ok) {
       throw new Error(`Failed to fetch data for ${cityName}`);
