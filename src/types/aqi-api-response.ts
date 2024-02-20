@@ -52,7 +52,7 @@ interface AQIApiResponse {
     dominentpol: string;
     iaqi: IAQI;
     time: Time;
-    forecast: Forecast;
+    forecast?: Forecast;
     debug: Debug;
   };
 }

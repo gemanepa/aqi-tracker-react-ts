@@ -12,7 +12,8 @@ async function getAQI(cityName: string): Promise<AQIApiResponse> {
     return await response.json();
   } catch (error) {
     // Handle error
-    console.error("Error fetching AQI data:", error);
+    process.env.NODE_ENV === "development" &&
+      console.error("Error fetching AQI data:", error);
     throw error;
   }
 }

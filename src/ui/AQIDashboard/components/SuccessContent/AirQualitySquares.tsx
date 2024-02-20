@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
+import useAqiContext from "../../hooks/useAqiContext";
+
 import type {
   AirQualityRangeInfo,
   CalculatedAQIsWithRanges,
@@ -38,11 +40,11 @@ const Label = styled.div`
   margin-bottom: 10px;
 `;
 
-const AirQualitySquares: React.FC<CalculatedAQIsWithRanges> = ({
-  today,
-  yesterday,
-  tomorrow,
-}) => {
+const AirQualitySquares: React.FC = () => {
+  const { aqis } = useAqiContext();
+  if (!aqis) return null;
+  const { today, yesterday, tomorrow } = aqis as CalculatedAQIsWithRanges;
+
   return (
     <div
       style={{

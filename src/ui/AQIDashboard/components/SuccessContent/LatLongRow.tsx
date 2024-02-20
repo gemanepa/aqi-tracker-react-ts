@@ -1,7 +1,6 @@
-import { useContext } from "react";
 import styled from "@emotion/styled";
 import translations from "@/assets/i18n/en.json";
-import AqiContext from "../../context/AqiContext";
+import useAqiContext from "../../hooks/useAqiContext";
 
 const { dashboard } = translations.body;
 
@@ -14,7 +13,7 @@ const LatitudeLongitudeInfo = styled.h4`
 `;
 
 const LatLongRow = () => {
-  const { response } = useContext(AqiContext);
+  const { response } = useAqiContext();
 
   const latitude = response?.data?.city?.geo[0];
   const longitude = response?.data?.city?.geo[1];

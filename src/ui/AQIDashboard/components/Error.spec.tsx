@@ -1,58 +1,83 @@
 import { render } from "@testing-library/react";
 import Error from "./Error";
-import AqiContext from "../context/AqiContext";
+import * as useAqiContextModule from "../hooks/useAqiContext";
 import { mockResponseOk } from "@/utils/mocks/aqi-api-response";
+import { mockAQIsWithRanges } from "@/utils/mocks/aqi-calc";
 
-describe("Error component", () => {
+jest.mock("@/utils/constants/tokens", () => ({
+  AQI_API_TOKEN: "mockTokenValue",
+}));
+jest.mock("../hooks/useAqiContext");
+
+describe.only("Error component", () => {
+  beforeEach(() => {
+    jest.clearAllMocks(); // Clear all mock calls between tests
+    jest.resetModules(); // Reset all module mocks between tests
+  });
+
   it("should render error message when isError is true", () => {
-    const isError = true;
-    const { getByTestId } = render(
-      <AqiContext.Provider
-        value={{
-          isError,
-          isLoading: false,
-          response: undefined,
-          setNewSearch: () => {},
-        }}
-      >
-        <Error />
-      </AqiContext.Provider>
-    );
+    jest.mocked(useAqiContextModule.default).mockReturnValue({
+      isError: true,
+      isLoading: false,
+      response: undefined,
+      setNewSearch: jest.fn(),
+      aqis: mockAQIsWithRanges,
+    });
+
+    const { getByTestId } = render(<Error />);
     const errorContainer = getByTestId("error-container");
     expect(errorContainer).toBeInTheDocument();
   });
 
   it("should not render anything when isLoading is true", () => {
-    const isLoading = true;
-    const { container } = render(
-      <AqiContext.Provider
-        value={{
-          isLoading,
-          isError: false,
-          response: undefined,
-          setNewSearch: () => {},
-        }}
-      >
-        <Error />
-      </AqiContext.Provider>
-    );
+    jest.mocked(useAqiContextModule.default).mockReturnValue({
+      isError: false,
+      isLoading: true,
+      response: undefined,
+      setNewSearch: jest.fn(),
+      aqis: mockAQIsWithRanges,
+    });
+
+    const { container } = render(<Error />);
     expect(container.firstChild).toBeNull();
   });
 
-  it("should not render anything when there is no error and data is present", () => {
-    const isError = false;
-    const { container } = render(
-      <AqiContext.Provider
-        value={{
-          isError,
-          isLoading: false,
-          response: mockResponseOk,
-          setNewSearch: () => {},
-        }}
-      >
-        <Error />
-      </AqiContext.Provider>
-    );
+  // it("should render no location error message when there is no city data", () => {
+  //   jest.mocked(useAqiContextModule.default).mockReturnValue({
+  //     isError: false,
+  //     isLoading: false,
+  //     response: { data: { city: null } },
+  //     setNewSearch: jest.fn(),
+  //   });
+
+  //   const { getByText } = render(<Error />);
+  //   const errorText = getByText("No location information available");
+  //   expect(errorText).toBeInTheDocument();
+  // });
+
+  // it("should render no forecast error message when there is no forecast data", () => {
+  //   jest.mocked(useAqiContextModule.default).mockReturnValue({
+  //     isError: false,
+  //     isLoading: false,
+  //     response: { data: { forecast: null } },
+  //     setNewSearch: jest.fn(),
+  //   });
+
+  //   const { getByText } = render(<Error />);
+  //   const errorText = getByText("No forecast information available");
+  //   expect(errorText).toBeInTheDocument();
+  // });
+
+  it("should not render anything when there is no error and both city and forecast data are present", () => {
+    jest.mocked(useAqiContextModule.default).mockReturnValue({
+      isError: false,
+      isLoading: false,
+      response: mockResponseOk,
+      setNewSearch: jest.fn(),
+      aqis: mockAQIsWithRanges,
+    });
+
+    const { container } = render(<Error />);
     expect(container.firstChild).toBeNull();
   });
 });

@@ -1,41 +1,31 @@
 import { render } from "@testing-library/react";
 import AirQualitySquares from "./AirQualitySquares";
+import * as useAqiContextModule from "../../hooks/useAqiContext";
+import { mockResponseOk } from "@/utils/mocks/aqi-api-response";
+import { mockAQIsWithRanges } from "@/utils/mocks/aqi-calc";
+
+jest.mock("@/utils/constants/tokens", () => ({
+  AQI_API_TOKEN: "mockTokenValue",
+}));
+jest.mock("../../hooks/useAqiContext");
 
 describe("AirQualitySquares component", () => {
-  const mockAQIsWithRanges = {
-    today: {
-      value: 50,
-      range: {
-        status: "Moderate",
-        description:
-          "Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.",
-        color: "#FFD700",
-      },
-    },
-    yesterday: {
-      value: 40,
-      range: {
-        status: "Good",
-        description:
-          "Air quality is considered satisfactory, and air pollution poses little or no risk.",
-        color: "#00FF00",
-      },
-    },
-    tomorrow: {
-      value: 60,
-      range: {
-        status: "Unhealthy for Sensitive Groups",
-        description:
-          "Members of sensitive groups may experience health effects. The general public is not likely to be affected.",
-        color: "#FFA500",
-      },
-    },
-  };
+  beforeEach(() => {
+    jest.clearAllMocks();
+    jest.resetModules();
+  });
 
   it("renders air quality squares with correct values", () => {
-    const { getByText, getByTestId } = render(
-      <AirQualitySquares {...mockAQIsWithRanges} />
-    );
+    const mockContext = {
+      response: mockResponseOk,
+      isLoading: false,
+      isError: false,
+      setNewSearch: jest.fn(),
+      aqis: mockAQIsWithRanges,
+    };
+    jest.mocked(useAqiContextModule.default).mockReturnValue(mockContext);
+
+    const { getByText, getByTestId } = render(<AirQualitySquares />);
     expect(getByText("50")).toBeInTheDocument();
     expect(getByText("40")).toBeInTheDocument();
     expect(getByText("60")).toBeInTheDocument();

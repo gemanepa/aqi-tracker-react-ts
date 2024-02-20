@@ -1,25 +1,34 @@
 import { render } from "@testing-library/react";
 import LatLongRow from "./LatLongRow";
-import AqiContext from "../../context/AqiContext";
+import * as useAqiContextModule from "../../hooks/useAqiContext";
 import { mockResponseOk } from "@/utils/mocks/aqi-api-response";
+import { mockAQIsWithRanges } from "@/utils/mocks/aqi-calc";
+
+jest.mock("@/utils/constants/tokens", () => ({
+  AQI_API_TOKEN: "mockTokenValue",
+}));
+jest.mock("../../hooks/useAqiContext");
 
 describe("LatLongRow component", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    jest.resetModules();
+  });
+
   it("displays latitude and longitude information correctly", () => {
     const latitude = mockResponseOk.data.city.geo[0];
     const longitude = mockResponseOk.data.city.geo[1];
-    const { getByTestId } = render(
-      <AqiContext.Provider
-        value={{
-          response: mockResponseOk,
-          isLoading: false,
-          isError: false,
-          setNewSearch: () => {},
-        }}
-      >
-        <LatLongRow />
-      </AqiContext.Provider>
-    );
 
+    const mockContext = {
+      response: mockResponseOk,
+      isLoading: false,
+      isError: false,
+      setNewSearch: jest.fn(),
+      aqis: mockAQIsWithRanges,
+    };
+    jest.mocked(useAqiContextModule.default).mockReturnValue(mockContext);
+
+    const { getByTestId } = render(<LatLongRow />);
     const latitudeLongitudeInfo = getByTestId(
       "dashboard-latitude-longitude-info"
     );

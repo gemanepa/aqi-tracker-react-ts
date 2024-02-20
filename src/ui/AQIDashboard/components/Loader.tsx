@@ -1,7 +1,6 @@
-import { useContext } from "react";
 import styled from "@emotion/styled";
 import { CircularProgress } from "@mui/material";
-import AqiContext from "../context/AqiContext";
+import useAqiContext from "../hooks/useAqiContext";
 
 const LoaderContainer = styled.div`
   display: flex;
@@ -11,7 +10,7 @@ const LoaderContainer = styled.div`
 `;
 
 const Loader = () => {
-  const { isLoading } = useContext(AqiContext);
+  const { isLoading } = useAqiContext();
 
   if (!isLoading) return null;
 

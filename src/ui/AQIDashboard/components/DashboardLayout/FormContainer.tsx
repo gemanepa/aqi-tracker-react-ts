@@ -1,10 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import styled from "@emotion/styled";
 import translations from "@/assets/i18n/en.json";
 import formatCityName from "@/ui/AQIDashboard/utils/formatCityName";
-import AqiContext from "@/ui/AQIDashboard/context/AqiContext";
+import useAqiContext from "@/ui/AQIDashboard/hooks/useAqiContext";
 
 const { dashboard } = translations.body;
 
@@ -47,7 +47,7 @@ const StyledButton = styled(Button)`
 `;
 
 const FormContainer = () => {
-  const { setNewSearch } = useContext(AqiContext);
+  const { setNewSearch } = useAqiContext();
   const [selectedCity, setSelectedCity] = useState("");
 
   const handleSearch = (e: React.FormEvent) => {

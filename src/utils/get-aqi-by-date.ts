@@ -31,25 +31,25 @@ const getAQIByDate = (
 
     // Filter daily forecast data for yesterday and tomorrow
     const yesterdayForecast = {
-      o3: reqResponse.data.forecast.daily.o3.find(
+      o3: reqResponse.data.forecast?.daily.o3.find(
         (entry) => entry.day === formattedYesterday
       ),
-      pm10: reqResponse.data.forecast.daily.pm10.find(
+      pm10: reqResponse.data.forecast?.daily.pm10.find(
         (entry) => entry.day === formattedYesterday
       ),
-      pm25: reqResponse.data.forecast.daily.pm25.find(
+      pm25: reqResponse.data.forecast?.daily.pm25.find(
         (entry) => entry.day === formattedYesterday
       ),
     } as StructuredDailyConcentrationData;
 
     const tomorrowForecast = {
-      o3: reqResponse.data.forecast.daily.o3.find(
+      o3: reqResponse.data.forecast?.daily.o3.find(
         (entry) => entry.day === formattedTomorrow
       ),
-      pm10: reqResponse.data.forecast.daily.pm10.find(
+      pm10: reqResponse.data.forecast?.daily.pm10.find(
         (entry) => entry.day === formattedTomorrow
       ),
-      pm25: reqResponse.data.forecast.daily.pm25.find(
+      pm25: reqResponse.data.forecast?.daily.pm25.find(
         (entry) => entry.day === formattedTomorrow
       ),
     } as StructuredDailyConcentrationData;

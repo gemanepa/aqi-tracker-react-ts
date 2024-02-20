@@ -1,12 +1,11 @@
-import { useContext } from "react";
-import { StyledLocationParagraph } from "@/ui/AQIDashboard/components/SuccessContent";
-import AqiContext from "../context/AqiContext";
+import { StyledLocationParagraph } from "@/ui/AQIDashboard/components/SuccessContent/LocationParagraph";
+import useAqiContext from "../hooks/useAqiContext";
 import translations from "@/assets/i18n/en.json";
 
 const { error } = translations.body.dashboard;
 
 const Error = () => {
-  const { response, isError, isLoading } = useContext(AqiContext);
+  const { response, isError, isLoading } = useAqiContext();
   const city = response?.data?.city?.name;
   const forecast = response?.data?.forecast;
   if (isLoading) return null;
